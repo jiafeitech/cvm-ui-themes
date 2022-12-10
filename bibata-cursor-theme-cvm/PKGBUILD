@@ -1,0 +1,17 @@
+pkgname=bibata-cursor-theme-cvm
+pkgver=2.0.3
+pkgrel=1
+pkgdesc="Material Based Cursor Theme for Cvm UI Desktop"
+arch=('any')
+url="https://github.com/ful1e5/Bibata_Cursor"
+license=('GPL3')
+provides=("${pkgname%-cvm}")
+conflicts=("${pkgname%-cvm}")
+options=('!strip')
+source=("${pkgname%-cvm}-$pkgver.tar.gz::$url/releases/download/v$pkgver/Bibata-Modern-Ice.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  install -d "$pkgdir/usr/share/icons"
+  cp -r Bibata-* "$pkgdir/usr/share/icons"
+}

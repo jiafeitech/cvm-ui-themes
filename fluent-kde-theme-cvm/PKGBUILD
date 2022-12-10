@@ -1,0 +1,19 @@
+pkgname=fluent-kde-theme-cvm
+pkgver=1
+pkgrel=1
+pkgdesc="Fluent design theme for Cvm UI Desktop"
+arch=('any')
+makedepends=('git')
+source=("git+https://github.com/vinceliuice/Fluent-kde.git" "installer.patch")
+sha256sums=('SKIP' 'SKIP')
+provides=("fluent-kde-theme-git")
+conflicts=("fluent-kde-theme-git")
+
+prepare() {
+   patch $srcdir/Fluent-kde/install.sh installer.patch
+}
+
+package() {
+   PKG_DIR=$pkgdir $srcdir/Fluent-kde/install.sh -t pink -c light --round
+   PKG_DIR=$pkgdir $srcdir/Fluent-kde/install.sh -t pink -c light
+} 
