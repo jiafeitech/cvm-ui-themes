@@ -8,5 +8,6 @@ license=('MIT')
 package() {
    mkdir -p "${pkgdir}/usr/share/wallpapers"
 
-   cp -r "../cvm-ui-wallpapers" "${pkgdir}/usr/share/wallpapers"
+   cp -r "../onedrive" "${pkgdir}/usr/share/wallpapers"
+   cp -r "../your-phone" "${pkgdir}/usr/share/wallpapers"
 } 

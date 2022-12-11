@@ -4,6 +4,7 @@
 !PKGBUILD
 !*.patch
 !*.sh
-!cvm-ui-wallpapers/
-!cvm-ui-wallpapers/**
-
+!onedrive/
+!onedrive/**
+!your-phone/
+!your-phone/**
