@@ -1,0 +1,11 @@
+--- src/Fluent-kde/sddm/install.sh	2022-12-11 10:43:35.891314905 +0700
++++ src/Fluent-kde/sddm/install.new.sh	2022-12-11 12:07:05.109431042 +0700
+@@ -1,7 +1,7 @@
+ #!/bin/bash
+ 
+ ROOT_UID=0
+-THEME_DIR="/usr/share/sddm/themes"
++THEME_DIR="$PKG_DIR/usr/share/sddm/themes"
+ REO_DIR="$(cd $(dirname $0) && pwd)"
+ THEME_VARIANTS=('' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey' '-round')
+ 
