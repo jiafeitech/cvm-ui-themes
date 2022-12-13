@@ -9,13 +9,13 @@ makepkg -s
 mv *.zst ../out
 cd ..
 
-cd ./cvm-ui-splash
+cd ./cvm-ui-wallpapers
 ./cleanup.sh
 makepkg -s
 mv *.zst ../out
 cd ..
 
-cd ./cvm-ui-wallpapers
+cd ./ditto-menu-kde-git
 ./cleanup.sh
 makepkg -s
 mv *.zst ../out
