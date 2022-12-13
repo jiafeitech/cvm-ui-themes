@@ -4,8 +4,8 @@ pkgrel=1
 pkgdesc="Fluent design theme for Cvm UI Desktop"
 arch=('any')
 makedepends=('git')
-source=("git+https://github.com/vinceliuice/Fluent-kde.git" "installer.patch" "sddm-installer.patch" "background-pink.png")
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+source=("git+https://github.com/vinceliuice/Fluent-kde.git" "installer.patch" "sddm-installer.patch" "background-pink.png" "cvm.png" "qml.patch")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 provides=("fluent-kde-theme-git")
 conflicts=("fluent-kde-theme-git")
 
@@ -17,6 +17,14 @@ prepare() {
    # sddm bg
    rm -rf $srcdir/Fluent-kde/sddm/backgrounds/background-pink.png
    cp $srcdir/background-pink.png $srcdir/Fluent-kde/sddm/backgrounds
+
+   # splash bg
+   rm -rf $srcdir/Fluent-kde/plasma/look-and-feel/com.github.vinceliuice.Fluent-round-pink-light/contents/splash/images/background.png
+   cp $srcdir/background-pink.png $srcdir/Fluent-kde/plasma/look-and-feel/com.github.vinceliuice.Fluent-round-pink-light/contents/splash/images/background.png
+
+   # splash image
+   rm -rf $srcdir/Fluent-kde/plasma/look-and-feel/com.github.vinceliuice.Fluent-round-pink-light/contents/splash/images/kde.svg
+   cp $srcdir/cvm.png $srcdir/Fluent-kde/plasma/look-and-feel/com.github.vinceliuice.Fluent-round-pink-light/contents/splash/images/logo.png
 }
 
 package() {
@@ -27,4 +35,7 @@ package() {
    # sddm
    mkdir -p $pkgdir/usr/share/sddm/themes
    PKG_DIR=$pkgdir $srcdir/Fluent-kde/sddm/install.sh -t pink
+
+   # splash patch
+   patch $pkgdir/usr/share/plasma/look-and-feel/com.github.vinceliuice.Fluent-round-pink-light/contents/splash/Splash.qml qml.patch
 } 

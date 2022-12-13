@@ -1,0 +1,14 @@
+--- pkg/fluent-kde-theme-cvm/usr/share/plasma/look-and-feel/com.github.vinceliuice.Fluent-round-pink-light/contents/splash/Splash.qml	2022-12-13 16:43:58.000000000 +0700
++++ pkg/fluent-kde-theme-cvm/usr/share/plasma/look-and-feel/com.github.vinceliuice.Fluent-round-pink-light/contents/splash/Splash.new.qml	2022-12-13 16:46:06.273426807 +0700
+@@ -37,8 +37,10 @@
+         y: root.height
+         source: "images/rectangle.svg"
+         Image {
+-            source: "images/kde.svg"
++            source: "images/logo.png"
+             anchors.centerIn: parent
++            sourceSize.width: 254
++            sourceSize.height: 50
+         }
+         Rectangle {
+             radius: 3
