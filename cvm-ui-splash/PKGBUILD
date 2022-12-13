@@ -1,0 +1,34 @@
+pkgname=cvm-ui-splash
+pkgver=1
+pkgrel=1
+pkgdesc="Cvm UI Desktop KDE Splash screen"
+arch=('any')
+makedepends=('git')
+source=("git+https://gitlab.com/tazihad/manjaro-bamboo-splash.git" "metadata.patch" "background-pink.png" "qml.patch" "logo.png")
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+
+prepare() {
+   # branding
+   patch $srcdir/manjaro-bamboo-splash/metadata.desktop metadata.patch
+   rm -rf $srcdir/manjaro-bamboo-splash/AUTHORS
+   rm -rf $srcdir/manjaro-bamboo-splash/LICENSE
+   rm -rf $srcdir/manjaro-bamboo-splash/README.md
+
+   # preview image
+   rm -rf $srcdir/manjaro-bamboo-splash/contents/previews/splash.png
+   cp $srcdir/background-pink.png $srcdir/manjaro-bamboo-splash/contents/previews/splash.png
+
+   # splash image
+   patch $srcdir/manjaro-bamboo-splash/contents/splash/Splash.qml qml.patch
+   rm -rf $srcdir/manjaro-bamboo-splash/contents/splash/images/manjarologo.svg
+   cp $srcdir/logo.png $srcdir/manjaro-bamboo-splash/contents/splash/images/logo.png
+
+   # bg
+   rm -rf $srcdir/manjaro-bamboo-splash/contents/splash/images/background.png
+   cp $srcdir/background-pink.png $srcdir/manjaro-bamboo-splash/contents/splash/images/background.png
+}
+
+package() {
+   mkdir -p $pkgdir/usr/share/plasma/look-and-feel
+   cp -r $srcdir/manjaro-bamboo-splash $pkgdir/usr/share/plasma/look-and-feel/com.github.jiafeitech.cvm-ui-splash
+}

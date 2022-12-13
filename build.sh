@@ -9,6 +9,12 @@ makepkg -s
 mv *.zst ../out
 cd ..
 
+cd ./cvm-ui-splash
+./cleanup.sh
+makepkg -s
+mv *.zst ../out
+cd ..
+
 cd ./cvm-ui-wallpapers
 ./cleanup.sh
 makepkg -s
