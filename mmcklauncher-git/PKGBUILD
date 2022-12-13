@@ -1,0 +1,12 @@
+pkgname=mmcklauncher-git
+pkgver=0.6
+pkgrel=1
+pkgdesc="A Launcher for KDE Plasma based on a design by Max McKinney"
+arch=('any')
+source=("com.github.SnoutBug.mmckLauncher.tar.gz::https://github.com/SnoutBug/mmcklauncher/releases/download/$pkgver/com.github.SnoutBug.mmckLauncher.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+   mkdir -p $pkgdir/usr/share/plasma/plasmoids
+   cp -r $srcdir/com.github.SnoutBug.mmckLauncher $pkgdir/usr/share/plasma/plasmoids/com.github.SnoutBug.mmckLauncher
+} 
